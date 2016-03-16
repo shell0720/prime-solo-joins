@@ -24,7 +24,7 @@ DESC
 LIMIT 1;
 
 --7. How many products do we carry?
-SELECT SUM(quantity) FROM line_items;
+SELECT COUNT(*) FROM products;
 
 --8. What is the total available on-hand quantity of diet pepsi?
 SELECT SUM(warehouse_product.on_hand) FROM products JOIN warehouse_product ON products.id = warehouse_product.product_id
