@@ -14,14 +14,14 @@ SELECT warehouse FROM products JOIN warehouse_product ON products.id = warehouse
 JOIN warehouse ON warehouse_product.warehouse_id = warehouse.id WHERE products.description = 'diet pepsi';
 
 --5. Get the number of orders for each customer. NOTE: It is OK if those without orders are not included in results.
-SELECT orders.order_date, customers.first_name,customers.last_name FROM orders
+SELECT count(orders.order_date), customers.first_name,customers.last_name FROM orders
 INNER JOIN addresses ON orders.address_id = addresses.id
-INNER JOIN customers ON addresses.customer_id = customers.id;
+INNER JOIN customers ON addresses.customer_id = customers.id
+GROUP BY customers.first_name,customers.last_name;
+
 
 --6. How many customers do we have?
-SELECT customers.id FROM customers ORDER BY "id"
-DESC
-LIMIT 1;
+SELECT COUNT(*) FROM customers;
 
 --7. How many products do we carry?
 SELECT COUNT(*) FROM products;
